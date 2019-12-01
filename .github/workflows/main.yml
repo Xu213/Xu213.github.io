@@ -13,4 +13,8 @@ jobs:
       run: npm install hexo
     - name: Bulid To Public
       run: |
+        hexo g -f
+        cd public
         pwd
+        dir
+        
