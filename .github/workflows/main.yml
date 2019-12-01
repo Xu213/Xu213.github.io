@@ -1,20 +1,24 @@
-name: CI
+name: GitHub Actions Build and Deploy Demo
 
 on: [push]
 
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Join HEXO Condition
-      run: npm install hexo -g
-    - name: Bulid To Public
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BASE_BRANCH: dev
+        BRANCH: master
+        FOLDER: public
+        BUILD_SCRIPT: npm i -g hexo && npm install && hexo g -f 
+    - name: push
       run: |
-        hexo g -f
         cd public
-        pwd
         dir
         
