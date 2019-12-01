@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Join HEXO Condition
-      run: npm install hexo
+      run: npm install hexo -g
     - name: Bulid To Public
       run: |
         hexo g -f
